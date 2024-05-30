@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAPPHIRE PERFUME COLLECTION</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('perfumes.jpeg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            image-resolution:1000px;
+            overflow: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #727478; /* Blue color on hover */
+        }
+
+        .toggle-btn {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #404143; /* Blue color for button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 5px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #a0a3a9; /* Darker shade of blue on hover */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Drop shadow effect */
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            overflow-y: auto;
+            height: 80vh; /* Adjust height to fit content */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #34383d; /* Blue color for buttons */
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #84878b; /* Darker shade of blue on hover */
+        }
+
+        .orders-container {
+            margin-top: 20px;
+        }
+
+        .order-item {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-item span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
+
+    <div class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <img src="logo.png" alt="Logo" width="60px",height="60px"> <!-- Specify the path to your logo image -->
+        </div>
+
+             
+        <a href="sapphireform.html">Home</a>
+        <a href="summers.html">SUMMER COLLECTION</a>
+        <a href="unstitchedEid.html">EID UNSTITCHED</a>
+        <a href="womenstitched.html">WOMMEN STITCHED</a>
+        <a href="mens.html">MENS COLLECTION</a>
+        <a href="western.html">WESTERN WEAR</a>
+        <a href="accessories.html">ACCESSSORIES</a>
+        <a href="cosemtics.html">COSMETICS</a>
+        <a href="perfumes.html">PERFUMES</a>
+        
+    </div>
+
+    <div class="container">
+        <h2>SAPPHIRE PERFUME COLLECTION</h2>
+        <form id="orderForm">
+            <input type="text" id="orderId" placeholder="Order ID" required>
+            <input type="text" id="producttype" placeholder="Product Type" required>
+            <input type="text" id="productId" placeholder="Product ID" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="submit" value="Add" onclick="addOrder(event)">
+            <input type="submit" value="Update" onclick="updateOrder(event)">
+            <input type="button" value="Delete" onclick="deleteOrder()">
+        </form>
+        <div class="orders-container" id="ordersContainer">
+            <h2>Earlier Entries</h2>
+            <!-- Orders will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            if (navbar.style.left === '-250px') {
+                navbar.style.left = '0';
+            } else {
+                navbar.style.left = '-250px';
+            }
+        }
+
+        function addOrder(event) {
+            event.preventDefault();
+            const orderId = document.getElementById('orderId').value;
+            const producttype = document.getElementById('producttype').value;
+            const productId = document.getElementById('productId').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const order = { orderId,producttype, productId, quantity };
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            displayOrders();
+        }
+
+        function updateOrder(event) {
+            event.preventDefault();
+            const orderId = document.getElementById('orderId').value;
+            const producttype = document.getElementById('producttype').value;
+            const productId = document.getElementById('productId').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const orderIndex = orders.findIndex(order => order.orderId === orderId);
+            if (orderIndex !== -1) {
+                orders[orderIndex] = { orderId,producttype, productId, quantity };
+                localStorage.setItem('orders', JSON.stringify(orders));
+                displayOrders();
+            } else {
+                alert('Order ID not found');
+            }
+        }
+
+        function deleteOrder() {
+            const orderId = document.getElementById('orderId').value;
+            orders = orders.filter(order => order.orderId !== orderId);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            displayOrders();
+        }
+
+        function displayOrders() {
+            const ordersContainer = document.getElementById('ordersContainer');
+            ordersContainer.innerHTML = '<h2>Earlier Entries</h2>';
+
+            orders.forEach(order => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <span>Order ID: ${order.orderId}</span>
+                    <span>Product Type: ${order.producttype}</span>
+                    <span>Product ID: ${order.productId}</span>
+                    <span>Quantity: ${order.quantity}</span>
+                `;
+                ordersContainer.appendChild(orderItem);
+            });
+        }
+
+        window.onload = displayOrders;
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAPPHIRE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('store.jpeg'); /* Specify the path to your HD background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+             .navbar {
+            background-color: rgba(240, 235, 235, 0.9); /* Semi-transparent white background */
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #7b8084; /* Blue color on hover */
+        }
+
+        .toggle-btn {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #3e4042; /* Blue color for button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 5px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #222427; /* Darker shade of blue on hover */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Drop shadow effect */
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .products-container {
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 180px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+     
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #878585;
+            width: 100%;
+        }
+
+        .footer h1, .footer p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+ 
+    <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
+
+    <div class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <img src="logo.png" alt="Logo" width="60px" height="60px"> <!-- Specify the path to your logo image -->
+        </div>
+        <a href="sapphireform.html">Home</a>
+        <a href="summers.html">SUMMER COLLECTION</a>
+        <a href="unstitchedEid.html">EID UNSTITCHED</a>
+        <a href="womenstitched.html">WOMEN STITCHED</a>
+        <a href="mens.html">MENS COLLECTION</a>
+        <a href="western.html">WESTERN WEAR</a>
+        <a href="perfumes.html">PERFUMES</a>
+        <a href="accessories.html">ACCESSORIES</a>
+        <a href="cosemtics.html">COSMETICS</a>
+       
+    </div>
+
+    <div class="container">
+        <h1>Welcome to Sapphire!</h1>
+        <p>
+            At Sapphire, we are committed to delivering the highest quality products to our customers. Our journey started with a vision to create innovative and stylish products that stand out in the market.
+        </p>
+        <p>
+            We believe in the power of excellence and strive to exceed expectations in every aspect. Our dedicated team works tirelessly to bring you the best in design, functionality, and durability.
+        </p>
+        <p>
+            Thank you for choosing Sapphire. We look forward to being a part of your journey and providing you with exceptional products and services.
+        </p>
+    </div>
+
+    <div class="products-container">
+        <h2>PRODUCT RANGE</h2>
+        <div class="products">
+            <!-- Repeat this block for each clothing item -->
+            <div class="product">
+                <img src="summer.jpeg" alt="Logo" width="50px" height="90px">
+                <p>SUMMERS</p>
+                <p>Price: Rs 2300</p>
+                <a href="summers.html">SUMMER COLLECTION</a>
+
+            </div>
+            <div class="product">
+                <img src="EID.jpeg" alt="Logo" width="60px" height="70px">
+                <p>EID UNSTITCHED</p>
+                <p>Price: Rs 7500</p>
+                <a href="unstitchedEid.html">EID UNSTITCHED</a>
+              
+            </div>
+            <div class="product">
+                <img src="stitched.jpeg" alt="Logo" width="60px" height="70px">
+               
+                <p>WOMENS STITCHED</p>
+                <p>Price: Rs 9000</p>
+                <a href="womenstitched.html">WOMEN STITCHED</a>
+                
+            </div>
+            <div class="product">
+                <img src="men.jpeg" alt="Logo" width="60px" height="70px">
+                <p>MENS</p>
+                <p>Price: Rs 6900</p>
+                <a href="mens.html">MENS COLLECTION</a>
+               
+            </div>
+            <div class="product">
+                <img src="western.jpeg" alt="Logo" width="60px" height="70px">
+                <p>WESTERN WEAR</p>
+                <p>Price: Rs 8400</p>
+                <a href="western.html">WESTERN WEAR</a>
+               
+            </div>
+            <div class="product">
+                <img src="perfumes.jpeg" alt="Logo" width="60px" height="70px">
+                <p>PERFUMES</p>
+                <p>Price: Rs 3200</p>
+                <a href="perfumes.html">PERFUMES</a>
+            </div>
+            <div class="product">
+                <img src="jewellery.jpeg" alt="Logo" width="80px" height="10px">
+                <p>ACCESSORIES</p>
+                <p>Price:Rs 3700</p>
+                <a href="accessories.html">ACCESSORIES</a>
+                
+            </div>
+            <div class="product">
+                <img src="cosemtic.jpeg" alt="cos" width="30px" height="30px">
+                <p>COSMETICS</p>
+                <p>Price:Rs 700</p>
+                <a href="cosemtics.html">COSMETICS</a>
+                
+            </div>
+            <!-- Add more clothing items here -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <h1>Sapphire</h1>
+        <p>Contact us: info@sapphire.com</p>
+    </div>
+
+    <script>
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            if (navbar.style.left === '-250px') {
+                navbar.style.left = '0';
+            } else {
+                navbar.style.left = '-250px';
+            }
+        }
+    </script>
+</body>
+</html>
